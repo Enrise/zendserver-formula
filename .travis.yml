@@ -6,9 +6,10 @@ env:
   global:
     - BS_PIP_ALLOWED=1
     - BS_ECHO_DEBUG=1
-    - SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar --file-root=$PWD"
-  matrix:
     - STATE=zendserver
+  matrix:
+    - SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/apache2 --file-root=$PWD"
+    - SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/nginx --file-root=$PWD"
 
 before_install:
   - sudo apt-get update
