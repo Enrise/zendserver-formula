@@ -29,6 +29,18 @@ nginx:
     - require:
       - pkg: nginx
       - pkg: zendserver
+
+# Also deal with php5-fpm
+php5-fpm:
+  service.running:
+    - require:
+      - file: /etc/init.d/php5-fpm
+      - pkg: zendserver
+
+/etc/init.d/php5-fpm:
+  file.symlink:
+    - target: /usr/local/zend/bin/php-fpm.sh
+
 {%- else %}
 # Install apache2 ensure its running
 apache2:
@@ -156,10 +168,3 @@ zs-admin:
   grains.present:
     - name: zend-server:api:enabled
     - value:
-
-{%- if webserver == 'nginx' %}
-/etc/init.d/php-fpm:
-  file.symlink:
-    - target: /usr/local/zend/bin/php-fpm.sh
-
-{%- endif %}
