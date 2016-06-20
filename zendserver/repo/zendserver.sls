@@ -7,7 +7,7 @@
 zendserver_repo:
   pkgrepo.managed:
     - humanname: ZendServer PPA
-    {% if webserver == 'apache' and apache_version == '2.4' %}
+    {% if (webserver == 'apache' and apache_version == '2.4') or zend_version|float() >= 9.0 %}
     - name: deb http://repos.zend.com/zend-server/{{zend_version}}/deb_apache2.4 server non-free
     {% else %}
     - name: deb http://repos.zend.com/zend-server/{{zend_version}}/deb_ssl1.0 server non-free
