@@ -30,14 +30,14 @@ nginx:
       - pkg: nginx
       - pkg: zendserver
 
-# Also deal with php5-fpm
-php5-fpm:
+# Also deal with php-fpm
+php-fpm:
   service.running:
     - require:
-      - file: /etc/init.d/php5-fpm
+      - file: /etc/init.d/php-fpm
       - pkg: zendserver
 
-/etc/init.d/php5-fpm:
+/etc/init.d/php-fpm:
   file.symlink:
     - target: /usr/local/zend/bin/php-fpm.sh
 
