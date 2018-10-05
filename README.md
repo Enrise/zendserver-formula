@@ -3,7 +3,7 @@
 [![Travis branch](https://img.shields.io/travis/Enrise/zendserver-formula/master.svg?style=flat-square)](https://travis-ci.org/Enrise/zendserver-formula)
 
 Formula for Saltstack which installs ZendServer with PHP packages of given version, and optionally configures it.
-This was initially a [Saltstack-formulas repo](https://github.com/saltstack-formulas/zendserver-formula) but moved back to Enrise for better control & the ability of testing the formula using Travis.
+This was initially created as a [Saltstack-formulas repo](https://github.com/saltstack-formulas/zendserver-formula) but moved back to Enrise for better control & the ability of testing the formula using Travis.
 
 ## Compatibility
 

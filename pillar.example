@@ -5,8 +5,8 @@ zendserver:
 
   # Which versions to use for Zend Server & PHP.
   version:
-    zend: '8.0.2'
-    php: '5.6'
+    zend: '9.0.2'
+    php: '7.0'
     apache: '2.2'
 
   # Which webserver to use, can either be apache or nginx
