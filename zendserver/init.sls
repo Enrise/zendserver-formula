@@ -70,11 +70,11 @@ apache2-mpm-itk:
 zendserver:
   pkg.installed:
 {%- if webserver == 'nginx' %}
-    - name: zend-server-nginx-php-{{ php_version }}
+    - name: zend-server-nginx
     - require:
       - pkg: nginx
 {%- else %}
-    - name: zend-server-php-{{ php_version }}
+    - name: zend-server-php
 {%- endif %}
 
 # Set alternative to PHP since Zend Server uses a different folder
@@ -125,6 +125,13 @@ alternative-phpize:
 /etc/zendserver/bootstrap-zs.sh:
   file.managed:
     - source: salt://zendserver/files/bootstrap-zs.sh
+    - user: root
+    - group: adm
+    - mode: 740
+
+/etc/zendserver/changePhpVersion.php:
+  file.managed:
+    - source: salt://zendserver/files/changePhpVersion.php
     - user: root
     - group: adm
     - mode: 740
