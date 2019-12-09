@@ -74,7 +74,7 @@ zendserver:
     - require:
       - pkg: nginx
 {%- else %}
-    - name: zend-server-php
+    - name: zend-server-apache-fpm
 {%- endif %}
 
 # Set alternative to PHP since Zend Server uses a different folder
