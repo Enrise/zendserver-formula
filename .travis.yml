@@ -1,24 +1,18 @@
 language: python
 python:
 - '2.7'
+dist:
+  - trusty
+  - bionic
 
 env:
   global:
     - BS_PIP_ALLOWED=1
     - BS_ECHO_DEBUG=1
     - STATE=zendserver
-
-matrix:
-  # Test on Trusty (14.04 - EOL)
-  - dist: trusty
-    env: SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/apache2 --file-root=$PWD"
-  - dist: trusty
-    env: SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/nginx --file-root=$PWD"
-  # Test on Bionic (18.04)
-  - dist: bionic
-    env: SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/apache2 --file-root=$PWD"
-  - dist: bionic
-    env: SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/nginx --file-root=$PWD"
+  matrix:
+    - SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/apache2 --file-root=$PWD"
+    - SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/nginx --file-root=$PWD"
 
 before_install:
   - sudo apt-get update
