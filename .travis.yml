@@ -1,9 +1,13 @@
 language: python
 python:
 - '2.7'
-dist:
-  - trusty
-  - bionic
+
+jobs:
+  include:
+    - os: linux
+      dist: trusty
+    - os: linux
+      dist: bionic
 
 env:
   global:
