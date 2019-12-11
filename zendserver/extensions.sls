@@ -11,6 +11,8 @@
 # Get the key
 {% set zend_api_key = salt['grains.get']('zendserver:api:key') %}
 
+{% set php_version = salt['pillar.get']('zendserver:version:php', '5.5') %}
+
 # Enable extensions if set
 zendserver.enable_extensions:
  cmd.run:
@@ -28,6 +30,10 @@ zendserver.disable_extensions:
 /usr/local/zend/bin/zs-manage extension-off -e {{ extension_off }} -N admin -K {{ zend_api_key }}; {% endfor -%}
 {% set must_restart_zend = True %}
 {% endif %}
+
+zendserver.changePhpVersion:
+ cmd.run:
+   - name: /etc/zendserver/changePhpVersion.php admin {{ zend_api_key }} {{ php_version }}
 
 # If and extension was changed, we restart as a precaution. Most extensions requre a restart to be activated.
 {% if must_restart_zend %}
