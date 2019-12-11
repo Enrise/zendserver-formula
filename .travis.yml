@@ -10,7 +10,7 @@ env:
 matrix:
   include:
     - python: 3.7
-      env: PYTHONVERSION=python3.7SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/apache2 --file-root=$PWD"
+      env: PYTHONVERSION=python3.7 SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/apache2 --file-root=$PWD"
     - python: 3.7
       env: PYTHONVERSION=python3.7 SALT_ARGS="-l debug --local --retcode-passthrough --pillar-root=.salt/pillar/nginx --file-root=$PWD"
     - python: 2.7
