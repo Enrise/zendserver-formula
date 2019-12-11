@@ -1,13 +1,13 @@
 language: python
 python:
 - '2.7'
-dist: trusty
 
 env:
   global:
     - BS_PIP_ALLOWED=1
     - BS_ECHO_DEBUG=1
     - STATE=zendserver
+
 matrix:
   # Test on Trusty (14.04 - EOL)
   - dist: trusty
