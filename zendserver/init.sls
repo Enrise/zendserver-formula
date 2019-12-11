@@ -30,16 +30,18 @@ nginx:
       - pkg: nginx
       - pkg: zendserver
 
-# Also deal with php-fpm
-php-fpm:
-  service.running:
-    - require:
-      - file: /etc/init.d/php-fpm
-      - pkg: zendserver
-
 /etc/init.d/php-fpm:
   file.symlink:
     - target: /usr/local/zend/bin/php-fpm.sh
+
+# Also deal with php-fpm
+php-fpm:
+  service.running:
+    - enable: True
+    - reload: True
+    - require:
+      - file: /etc/init.d/php-fpm
+      - pkg: zendserver
 
 {%- else %}
 # Install apache2 ensure its running
