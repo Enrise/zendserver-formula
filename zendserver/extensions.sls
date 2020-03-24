@@ -35,6 +35,10 @@ zendserver.changePhpVersion:
  cmd.run:
    - name: /etc/zendserver/changePhpVersion.php admin {{ zend_api_key }} {{ php_version }}
 
+zendserver.changeJobQueueRetryCount:
+  cmd.run:
+    - name: /etc/zendserver/changeJobQueueRetryCount.php admin {{ zend_api_key }} 0
+
 # If and extension was changed, we restart as a precaution. Most extensions requre a restart to be activated.
 {% if must_restart_zend %}
 zendserver.restart_because_extension_mutation:
