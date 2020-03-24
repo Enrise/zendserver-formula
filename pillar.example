@@ -45,3 +45,7 @@ zendserver:
   # Directives to be set or modified
   #directives:
   #  - zray.zendserver_ui_url: "https://your.server.example.com:10082/ZendServer"
+
+  # Job queue daemon settings
+  jqd:
+    http_retry_count: '0'
