@@ -12,7 +12,7 @@
 {% set zend_api_key = salt['grains.get']('zendserver:api:key') %}
 
 # Get JQD settings
-{% set jqd_http_retries = salt['pillar.get']('zendserver:jqd:http_retry_count', '0') %}
+{% set jqd_http_retries = salt['pillar.get']('zendserver:jqd:http_retry_count', '10') %}
 
 # Get PHP version settings
 {% set php_version = salt['pillar.get']('zendserver:version:php', '5.5') %}
