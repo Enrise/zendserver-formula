@@ -2,4 +2,4 @@
 <?php
 
 require_once "ZendServerWebApi.php";
-(new ZendServerWebApi($argv))->setPhpVersion();
+(new ZendServerWebApi($argv))->setAllQueuesRetries();

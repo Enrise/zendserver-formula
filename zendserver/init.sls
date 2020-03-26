@@ -136,6 +136,20 @@ alternative-phpize:
     - group: adm
     - mode: 740
 
+/etc/zendserver/changeJobQueueRetryCount.php:
+  file.managed:
+    - source: salt://zendserver/files/changeJobQueueRetryCount.php
+    - user: root
+    - group: adm
+    - mode: 740
+
+/etc/zendserver/ZendServerWebApi.php:
+  file.managed:
+    - source: salt://zendserver/files/ZendServerWebApi.php
+    - user: root
+    - group: adm
+    - mode: 640
+
 # Bootstrap Zend-Server to prevent first-run wizard while accessing the admin panel
 {%- if bootstrap %}
 bootstrap-zs:

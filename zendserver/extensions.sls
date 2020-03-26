@@ -11,6 +11,10 @@
 # Get the key
 {% set zend_api_key = salt['grains.get']('zendserver:api:key') %}
 
+# Get JQD settings
+{% set jqd_http_retries = salt['pillar.get']('zendserver:jqd:http_retry_count', '10') %}
+
+# Get PHP version settings
 {% set php_version = salt['pillar.get']('zendserver:version:php', '5.5') %}
 
 # Enable extensions if set
@@ -34,6 +38,10 @@ zendserver.disable_extensions:
 zendserver.changePhpVersion:
  cmd.run:
    - name: /etc/zendserver/changePhpVersion.php admin {{ zend_api_key }} {{ php_version }}
+
+zendserver.changeJobQueueRetryCount:
+  cmd.run:
+    - name: /etc/zendserver/changeJobQueueRetryCount.php admin {{ zend_api_key }} {{ jqd_http_retries }}
 
 # If and extension was changed, we restart as a precaution. Most extensions requre a restart to be activated.
 {% if must_restart_zend %}
